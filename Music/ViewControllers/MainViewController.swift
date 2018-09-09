@@ -14,6 +14,7 @@ extension UITextField {
     }
 }
 extension MainViewController: MusicDelegate{
+    
     func checkCategoryDidFailed(message: String){
         print(message)
     }
@@ -44,10 +45,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     let categories = ["artist", "album", "track"]
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         category.rightView = UIImageView(image: UIImage(named: "arrow"))
         category.rightViewMode = .always
-
         category.loadDropdownData(data: categories,delegate: self)
+        
         self.presenter = MusicPresenter(delegate: self)
         self.listMusic.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         listMusic.delegate = self

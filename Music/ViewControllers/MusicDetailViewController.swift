@@ -43,9 +43,6 @@ class MusicDetailViewController: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        nameLabel.numberOfLines = 0
-        artistLabel.numberOfLines = 0
-        
         if(selectedAlbum != nil)
         {
             if(selectedAlbum?.image[2].text.isEmpty)!
@@ -87,6 +84,11 @@ class MusicDetailViewController: UIViewController
             nameLabel.text = selectedTrack?.name
             artistLabel.text = selectedTrack?.artist
         }
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        nameLabel.lineBreakMode = .byWordWrapping
+        nameLabel.numberOfLines = 0
     }
     func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()

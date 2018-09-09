@@ -39,15 +39,38 @@ class MusicTests: XCTestCase {
         presenter.check(categoryText: "")
         wait(for: [expec], timeout: 3)
     }
-    func testFetchedData(){
-        let expec = expectation(description: "server returns null")
-        let presenter = MusicPresenter(delegate: MockUIViewController(expectation: expec))
-        presenter.fetchData(category: "Track", categoryText: "its my life")
-        //wait(for: [expec], timeout: 10)
-    }
+    func testAlbumFetchedData(){
+        let expec = expectation(description: "server call")
+        //let presenter = MusicPresenter(delegate: MockUIViewController(expectation: expec))
+        let categoryText = "sss"
+        let category = "album"
+        let API_KEY = "&api_key=b92e88e20d14802cea3f032878724189"
+        let mainUrl = "http://ws.audioscrobbler.com/2.0/?method="
+        let encodedCategoryText = categoryText.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+        let searchLink = category + ".search"
+        let url:String = mainUrl + searchLink + "&" + category + "=" + encodedCategoryText! + API_KEY+"&format=json"
+        
+        URLSession.shared.dataTask(with:URLRequest(url: URL(string: url)!), completionHandler: {(data, response, error) in
+            
+            do {
+                if let response = response as? HTTPURLResponse , 200...299 ~= response.statusCode {
+                    
+                XCTAssertTrue(response.statusCode == 200, "statusCode is matching the server data")
+                }
+                else{
+                    XCTFail()
+                }
+                expec.fulfill()
+            }
+        }).resume()
+        wait(for: [expec], timeout: 30)
 }
-
+}
 class MockUIViewController: MusicDelegate{
+    var expec: XCTestExpectation
+    init(expectation: XCTestExpectation) {
+        self.expec = expectation
+    }
     func showData() {
     }
     
@@ -57,10 +80,6 @@ class MockUIViewController: MusicDelegate{
     func selectCategory(category: String) {
     }
     
-    var expec: XCTestExpectation
-    init(expectation: XCTestExpectation) {
-        self.expec = expectation
-    }
     func checkCategoryDidFailed(message: String){
         XCTAssertEqual(message, "category text can't be blank")
         self.expec.fulfill()

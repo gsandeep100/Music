@@ -83,7 +83,6 @@
 		2CF49B8A2143DA8A00A2C757 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF49B872143DA8A00A2C757 /* PickerView.swift */; };
 		2CF49B902143FA2F00A2C757 /* MusicPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF49B8F2143FA2F00A2C757 /* MusicPresenter.swift */; };
 		2CF49B912143FA2F00A2C757 /* MusicPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF49B8F2143FA2F00A2C757 /* MusicPresenter.swift */; };
-		2CF49B922143FA2F00A2C757 /* MusicPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF49B8F2143FA2F00A2C757 /* MusicPresenter.swift */; };
 		2CF49B942144542900A2C757 /* MusicDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF49B932144542900A2C757 /* MusicDetailViewController.swift */; };
 		2CF49B952144542900A2C757 /* MusicDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF49B932144542900A2C757 /* MusicDetailViewController.swift */; };
 		2CF49B962144542900A2C757 /* MusicDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF49B932144542900A2C757 /* MusicDetailViewController.swift */; };
@@ -508,7 +507,6 @@
 				2C3A459F2144943C005AF478 /* ArtistImage.swift in Sources */,
 				2CF49B962144542900A2C757 /* MusicDetailViewController.swift in Sources */,
 				2C3A45AE2144943C005AF478 /* Artist.swift in Sources */,
-				2CF49B922143FA2F00A2C757 /* MusicPresenter.swift in Sources */,
 				2C3A45A52144943C005AF478 /* Artistmatche.swift in Sources */,
 				2C3A45B12144943C005AF478 /* ArtistRootClass.swift in Sources */,
 				2C3A45892144942E005AF478 /* Album.swift in Sources */,
