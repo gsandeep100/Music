@@ -33,4 +33,36 @@ class MusicTests: XCTestCase {
         }
     }
     
+    func testPresenterWithEmptyCategoryName(){
+        let expec = expectation(description: "empty category text")
+        let presenter = MusicPresenter(delegate: MockUIViewController(expectation: expec))
+        presenter.check(categoryText: "")
+        wait(for: [expec], timeout: 3)
+    }
+    func testFetchedData(){
+        let expec = expectation(description: "server returns null")
+        let presenter = MusicPresenter(delegate: MockUIViewController(expectation: expec))
+        presenter.fetchData(category: "Track", categoryText: "its my life")
+        //wait(for: [expec], timeout: 10)
+    }
+}
+
+class MockUIViewController: MusicDelegate{
+    func showData() {
+    }
+    
+    func checkServerResultFailed(message: String) {
+    }
+    
+    func selectCategory(category: String) {
+    }
+    
+    var expec: XCTestExpectation
+    init(expectation: XCTestExpectation) {
+        self.expec = expectation
+    }
+    func checkCategoryDidFailed(message: String){
+        XCTAssertEqual(message, "category text can't be blank")
+        self.expec.fulfill()
+    }
 }
