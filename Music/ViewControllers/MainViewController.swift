@@ -61,11 +61,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     @IBAction func confirmPressed(sender: UIButton) {
-        presenter?.fetchData(category: self.category.text!,categoryText: self.categoryText.text!)
+        _=presenter?.fetchData(category: self.category.text!,categoryText: self.categoryText.text!)
     }
 
     @IBAction func textFieldAction(sender: UITextField) {
-        presenter?.fetchData(category: self.category.text!,categoryText: self.categoryText.text!)
+        _=presenter?.fetchData(category: self.category.text!,categoryText: self.categoryText.text!)
     }
     
     func doTableRefresh()
